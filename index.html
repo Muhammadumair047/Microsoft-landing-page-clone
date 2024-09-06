@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+   
+    <link rel="stylesheet" crossorigin href="/assets/index-BGPYBEnH.css">
+  </head>
+  <body>
+    <div class="navbar  flex justify-between  items-center md:py-4 ">
+      <div  class="flex justify-center items-center md:order-2 gap-2">
+        <div  class="hamburger inline-block cursor-pointer md:hidden p-4">
+          <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+           
+        </div>
+        <div class="md:hidden"><i class="fa fa-search fa-flip-horizontal cursor-pointer "></i>  
+        </div>
+      
+      </div>
+
+      <div  class="logo text-center flex  md:order-1 ml-16   ">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAuCAYAAABK69fpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTAwQkM2Mzk4NDBBMTFFNjhDQkVCOTdDMjE1NkM3RkQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTAwQkM2Mzg4NDBBMTFFNjhDQkVCOTdDMjE1NkM3RkQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBMkM5MzFBNDcwQTExMUU2QUVERkExNDU3ODU1M0I3QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBMkM5MzFBNTcwQTExMUU2QUVERkExNDU3ODU1M0I3QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgQJy/MAAAxESURBVHja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" width="95" class=" m-auto" >
+
+        <div  class="navlinks absolute  left-0 top-[-100%] w-full text-left  md:static  md:w-auto  text-sm md:bg-white bg-gray-200    md:flex    md:-translate-x-0  md:mx-4 ">
+       
+          <div class="fitem p-4">Microsoft 365</div>
+          <div class="fitem p-4">Office</div>
+          <div class="fitem p-4">Copilot</div>
+          <div class="fitem p-4">Windows</div>
+          <div class="fitem p-4">Support</div>
+        
+      </div>
+      </div>
+      <div class="card text-sm pr-8 gap-8  md:pr-16 md:gap-4 text-center md:order-3 flex">
+        <div class="search hidden md:block">All Microsoft
+
+        </div>
+        <div class="hidden lg:block"><i class="fa fa-search fa-flip-horizontal cursor-pointer "></i>  
+        </div>
+        <div ><a href=""><img src="/assets/shopping-cart-cRrvgLyv.png" width="20"  alt=""></a>
+        </div>
+        <div ><a href=""><img src="/assets/user-icon-DEo3I6hS.png" width="25"  alt=""></a>
+        </div>
+        
+      </div>
+    </div>
+<!--For Lg Screens-->
+<main class="overflow-hidden relative lg:block hidden w-full h-[500px]">
+  <!-- Slide 1 -->
+  <div class="absolute slide transition-transform duration-1000 w-full h-full flex items-center justify-between">
+    <div class="left relative mx-28 z-10">
+      <h1 class="text-3xl pb-3 font-semibold w-96">Unlock your potential with Microsoft Copilot</h1>
+      <p class="w-96 pb-3">Get things done faster and unleash your creativity with the power of AI anywhere you go.</p>
+      <button type="button" class="bg-[#005CA5] hover:bg-[#0c4679] mt-3 p-2 rounded-sm font-semibold text-white">Download the Copilot app</button>
+    </div>
+    <div class="right absolute">
+      <img src="/assets/Highlight-MultiCanvas-Microsoft-Copilot-App-3screens_VP4-1399x600-CWyadlfg.avif" alt="banner-img">
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="absolute slide transition-transform duration-1000 w-full h-full flex items-center justify-between">
+    <div class="left relative mx-28 z-10">
+      <h1 class="text-3xl pb-3 font-semibold w-96">Maximize the everyday with Microsoft 365</h1>
+      <p class="w-96 pb-3">Get online protection, secure cloud storage, and innovative apps designed to fit your needs – all in one plan.</p>
+      <div class="flex text-center items-center gap-4 font-semibold pt-3">
+        <button type="button" class="bg-[#005CA5] hover:bg-[#0c4679] p-2 rounded-sm text-white">For one person</button>
+        <div>For up to six people</div>
+        <div class="fa fa-angle-right"></div>
+      </div>
+    </div>
+    <div class="right absolute">
+      <img src="/assets/sliderimg-2-Yh5lKA7e.avif" alt="banner-img-2" class="h-full">
+    </div>
+  </div>
+
+
+</main>
+  <!-- Slider Navigation Buttons & Radio Buttons -->
+<div class="text-center text-3xl lg:flex mt-4 justify-center hidden items-center space-x-4">
+  <div class="text-center">
+    <button onclick="togglePlayPause()" id="playPauseBtn">
+      <img src="/assets/pause-button-m-oYPwkE.png" width="20" alt="Play">
+    </button>
+  </div>
+  <button onclick="goPrev()" class="fa fa-angle-left"></button>
+
+  <!-- Radio buttons for slide indicators -->
+  <input type="radio" name="slider" id="radio1" class="radio-btn" />
+  <input type="radio" name="slider" id="radio2" class="radio-btn" />
+
+  <button onclick="goNext()" class="fa fa-angle-right"></button>
+</div>
+
+
+
+ 
+
+
+<!--For small screens-->
+    <div class="  slider lg:hidden flex flex-col-reverse lg:flex-row">
+      <div class="left mx-6 py-6 lg:my-auto  md:-my-16 md:bg-white md:p-10">
+        
+        <h1 class="text-2xl pb-3 font-semibold">Unlock your potential with Microsoft Copilot</h1>
+        <p >Get things done faster and unleash your creativity with the power of AI anywhere you go.</p>
+        <button type="button" class="text-white bg-[#005CA5] hover:bg-blue-700 font-medium  text-md px-5 py-2.5 me-2 my-6 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 ">Downlaod the Copilot app</button>
+
+        
+      </div>
+      <div class="right  ">
+        <img src="/assets/ic-1App-3-CZL_6NBR.avif"  alt="banner-img">
+        
+      </div>
+    </div>
+
+
+
+  <div class="card sm:flex lg:grid lg:grid-cols-4 grid md:grid md:grid-cols-2  gap-8 p-16 ">
+      
+    <div class="bg-white md:w-full  md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="data:image/avif;base64,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" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5">Designed for life today – and tomorrow</h2>
+      <p class="p-5">The next-generation of games. Your goals. Friends and family. Windows 11 was made to bring you closer to everything you love.</p>
+     
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5 p-1.5 sm:p-2 rounded-sm w-48 font-semibold text-white mt-auto">
+        See if your PC is ready
+    </button>
+    </div>
+    <div  class="bg-white md:w-full md:mt-10  border shadow shadow-gray-200  flex flex-col">
+      <img src="data:image/avif;base64,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" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5 ">Microsoft Edge</h2>
+      <p class="p-5">World-class performance with more privacy, more productivity and more value while you browse.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5 p-1.5 sm:p-2 rounded-sm w-36 font-semibold text-white mt-auto">
+        Downlaod Now
+    </button>
+    </div>
+  
+    <div  class="bg-white md:w-full md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="/assets/card-img-3-CIVEig4v.avif" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5">Microsoft OneDrive</h2>
+      <p class="p-5">Save your files and photos to OneDrive and access them from any device, anywhere.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5 p-1.5 sm:p-2 rounded-sm w-28 font-semibold text-white mt-auto">
+        Learn more
+    </button>
+    </div>
+    <div class="bg-white md:w-full md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="/assets/card-img-4-BxIzG-9N.avif" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5" >Outlook for iOS and Android</h2>
+      <p class="p-5">Connect. Organize. Get things done.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5 p-1.5 sm:p-2 rounded-sm w-36 font-semibold text-white mt-auto">
+        Downlaod Now
+    </button>
+  </div>
+    </div>
+
+
+  <div class="p-8 sm:p-12 md:p-16">
+    <div class="relative">
+        <img src="/assets/section-3-img-under-text-organize-CqsLTVgE.avif" alt="banner-img" class="w-full bg-cover h-auto">
+        <!-- Hidden on small and medium screens, visible on large screens -->
+        <div class="hidden lg:flex lg:absolute inset-0 lg:justify-end  pr-16 pt-48 ">
+            <div>
+                <h2 class="text-white text-3xl font-semibold lg:pb-3">Organize your life</h2>
+                <p class="text-white text-lg w-96 pb-3">Keep your ideas and notes organized with OneNote</p>
+                <button class="bg-[#005CA5] hover:bg-[#0c4679] p-2 sm:p-3 rounded-sm w-32 font-semibold text-white mt-3">
+                    Learn more
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visible on small and medium screens -->
+    <div class="relative bg-white border sm:ml-2 sm:mr-2 sm:-mt-8  p-4 sm:p-12 lg:hidden">
+        <h2 class="text-black text-2xl sm:text-3xl font-semibold pb-3">Organize your life</h2>
+        <p class="text-black text-sm sm:text-base w-full sm:w-80 pb-3">Keep your ideas and notes organized with OneNote</p>
+        <button class="bg-[#005CA5] hover:bg-[#0c4679] p-2 sm:p-3 rounded-sm w-28 font-semibold text-white mt-3">
+            Learn more
+        </button>
+    </div>
+</div>
+
+<div class="card sm:flex lg:grid lg:grid-cols-4 grid md:grid md:grid-cols-2  gap-8 p-16 ">
+      
+    <div class="bg-white md:w-full  md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="data:image/avif;base64,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" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5"> Copilot for Microsoft 365– and tomorrow</h2>
+      <p class="p-5">  Save time and focus on the things that matter most with AI in Microsoft 365 for business.</p>
+     
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5 p-1.5 sm:p-2 rounded-sm w-28 font-semibold text-white mt-auto">
+        Learn More
+    </button>
+    </div>
+    <div  class="bg-white md:w-full md:mt-10  border shadow shadow-gray-200  flex flex-col">
+      <img src="data:image/avif;base64,UklGRq4EAABXRUJQVlA4IKIEAADQIgCdASopAacAPlEokkYjoqIhJFdoWHAKCWdu4ER6GMD6d5UV/3j5LgRyTfXS/wzbL+bvr2GnwRvEQ6YvmL57T0jupy3ldwLA4Cz4ux4evuwlZCd8Q6lW95CB818Nuq3vIQPmvht1VLAiSC4dVYwPNw2qY5x87satVeBI8DBgBYl2YG7Nta28FMdE/tYtcEUZlyioArmu9byImxQB8Jub3ydAD/p1zg1/gw3t7stjOlVb1sfjT7lNQFTbjuYbC4sZwhkKCp/YTNPczpPGtv61/nybQLamsKAdVB/26x2WdFFz73lsFCxN5RK0zxDqsEnopxwkBXDYj2y2jF9Ccv0EfviHcTDbqqTOe8EKpae8hA+a+G3Vb3kIHzXw26reiAD++5jBJOTWCX7k1sabh6zKAped3o9Zy5ee7Fm3RAUvO70es5cvPdknj8kDC0CnB3o8LwOTZDmTQ2OTFhZYPtI0ChG4xGH/7v4yPBosef3Z9xsJNMd7oYhvVxwOhF24XWStwSsm191ltEt6R1I5E2WiLipmxUFUhgBwEDUFAHmw12fI7pHTwyGbiwv5lBy5aBXa7n48h6QDOsCAptRPY4B7ZwV6Tajvb9ABJWDAFvtG/GbNy5FZ0xzqXbsIL78ezdESOQK4ql4HCjz7oAJWVO4D14vS8v/r0HYF7mX/EcwTwSdI1879lhxvwYvLGEF1nVcatyINJP734i4YF7ybcrupR/+rnaLWpeB8Pgu5FgQOYEd2It9Wimfo2TqQ2uv/7Ogjaq8k2IbnGZwrEy3ULLPPPTwRmLmfIlKtwK5N4mWIn361LyIN9tiGmQqtsRQ3u5gpKoWbJCnWmIsNOpJQdt2SviPAnOSoyZCwayLzUyN+G4An53F5Gfo6Lh8azX9zSealH0hUGQTeeda5wdrKkaWXAL91rwk9LQ+APkG3VauC0MYMCEWfwhtv0UL+ERwJaYs1lyHQcyrCFmbu77tm+/0p8rYJrpS7kM99wI1Kpqs6NXQIekcnrvBbgAAjwlyfqNDcqKt2WJQfStBN5KOm+8Pyf6CBKKD3ZwDcLDgoG9WdUeu86b18YTl+XhJv4WnMCfsEAaiUWofy9Rhnu0AtUDLfErrV68RjpUjAnuBsoDIXkvoIb6dqxqOIOYamb0fuvrhsVT0qXwnHT3ZPaV3gpQmZmSAXHNSFcSLzJHPT/GRv3OYNLZHAHMCCzCSS26lsr0xwU4Hv4mIOOoBKgKlyQam3cGitY7lFdNvw16nxrST7BF3a7B86OE43nRXwaGZMPlVVtkQ0CBqI3wdvNJFQLqHvVh9XC5QkJ8mC7RMMaS4AWER31gh2/ge1RtQSvQwLd1gDe+ZJTZAopQsiuGi9J/4d6mZns+h/mU3Ey2Ot+fx9h2bVfqIE8NqQzL2DK/VqqHRxiP5LfnW8vwNGF/PVfmoQ3wgdOJwaVlgKjRtMwfAzSSzq/yPGu1D9IOif/YWj1nNA9XSl2G0brN3EckEhtVqzqrNaTSPsKrRKIobVZACEGHhfMZHHwCa4Op42ev6vCOjY+fRXsqR6i5utvTb7EOJUIbSPHNluljkKfRGCNn9sAAAA" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5 ">Visual Studio 2022</h2>
+      <p class="p-5"> Get the most comprehensive IDE for .NET and C++ developers on Windows for building web, cloud, desktop, mobile apps, services and games.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5  p-1.5 sm:p-2 rounded-sm w-52 font-semibold text-white text-left mt-auto">
+        Download Visual Studio 2022
+    </button>
+    </div>
+  
+    <div  class="bg-white md:w-full md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="/assets/Content-Card-Microsoft-Teams-Commercial-Meeting-CHDEH9_-.avif" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5"> Get Microsoft Teams for your business</h2>
+      <p class="p-5">Online meetings, chat, real-time collaboration, and shared cloud storage – all in one place.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5  p-1.5 sm:p-2  rounded-sm w-52 font-semibold text-white text-left mt-auto">
+        Find the right plan for your business
+    </button>
+    </div>
+    <div class="bg-white md:w-full md:mt-10 border shadow shadow-gray-200  flex flex-col">
+      <img src="/assets/365%20cloud-D9TW4tMj.avif" alt="">
+      <h2 class="text-2xl font-semibold pt-5 pr-5 pl-5" >Welcome to your Windows 365 Cloud PC</h2>
+      <p class="p-5">Securely stream your Windows experience from the Microsoft cloud to any device.</p>
+      <button class="bg-[#005CA5] hover:bg-[#0c4679] m-5  p-1.5 sm:p-2 rounded-sm w-36 font-semibold text-white mt-auto">
+        Get it today
+    </button>
+  </div>
+    </div>
+
+
+   <div class="flex ml-20 pb-8 w-100">
+    <h3>Follow Microsoft</h3>
+    <div class="pl-6 "> 
+      <a href="https://www.facebook.com/MSFTPK/" target="_blank" >
+       <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Facebook%202x?scl=1" data-src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Facebook 2x?scl=1" alt="Facebook" title="Facebook" width="32" height="32"/>					
+      </a>
+    </div>
+    <div  class="pl-6">
+      <a class="d-inline-block action-trigger" href="https://twitter.com/ms_pakistan" target="_blank" aria-label="Follow Microsoft on X, opens in a new tab" data-bi-ecn="X" data-bi-bhvr="126" data-bi-cn="X" data-bi-socchn="X" data-bi-ct="Social Button" data-bi-pa="body" data-bi-compnm="Social Follow - horizontal">
+                    
+        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/icon-MSCOM-X-64x64?scl=1" data-src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/icon-MSCOM-X-64x64?scl=1" alt="X" title="X" width="32" height="32"/>					
+      </a>
+    </div>
+  <div  class="pl-6">
+    <a class="d-inline-block action-trigger" href="https://www.linkedin.com/company/microsoft" target="_blank" aria-label="Follow Microsoft on LinkedIn, opens in a new tab" data-bi-ecn="LinkedIn" data-bi-bhvr="126" data-bi-cn="LinkedIn" data-bi-socchn="LinkedIn" data-bi-ct="Social Button" data-bi-pa="body" data-bi-compnm="Social Follow - horizontal">
+                    
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Linkedin%202x?scl=1" data-src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Linkedin 2x?scl=1" alt="LinkedIn" title="LinkedIn" width="32" height="32"/>					
+    </a>
+  </div>
+   </div> 
+
+<div class=" md:grid md:grid-cols-3 lg:grid lg:grid-cols-6 items-top pl-16 pt-10 text-xs text-[#616161] bg-[#F2F2F2]">
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">What's New</h2>
+    <p> Surface Book 3</p>  
+    <p> Surface Pro</p>
+    <p>Microsoft Copilot</p>
+    <p>Explore Microsoft Production</p>
+    <p>Windows 11 apps</p>
+  </div>
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">Microsoft Store</h2>
+    <p>Account Profile</p>
+    <p>Download Center</p>
+    <p>Returns</p>
+    <p>Order Tracking</p>
+  </div>
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">Education</h2>
+    <p>Microsoft in Education</p>
+    <p>Devices for Education</p>
+    <p>Microsoft Teams for Education</p>
+    <p>Microsoft 365 Education</p>
+    <p>Office Education</p>
+    <p>Educator training and development</p>
+    <p>Deals for students and parents</p>
+    <p>Azure for students</p>
+  </div>
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">Business</h2>
+    <p>Microsoft Cloud</p>
+    <p>Microsoft Security</p>
+    <p>Azure</p>
+    <p>Dynamics 365</p>
+    <p>Microsoft 365</p>
+    <p>Microsoft Advertising</p>
+    <p>Copilot for Microsoft 365</p>
+    <p>Microsoft Teams</p>
+  </div>
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">Developer & IT</h2>
+    <p>Developer Center</p>
+    <p>Documentation</p>
+    <p>Microsoft Learn</p>
+    <p>Microsoft Tech Community</p>
+    <p>Azure Marketplace</p>
+    <p>AppSource</p>
+    <p>Microsoft Power Platform </p>
+    <p>Visual Studio</p>
+  </div>
+  <div class="pb-10 flex flex-col gap-4">
+    <h2 class="font-semibold text-sm">Company</h2>
+    <p>Career</p>
+    <p>About Microsoft</p>
+    <p>Company News</p>
+    <p>Company News</p>
+    <p>Privacy at Microsoft</p>
+    <p>Investors</p>
+    <p>Sustainability</p>
+  </div>
+  </div> 
+
+<script>
+    const navlinks = document.querySelector('.navlinks')
+      function onToggleMenu(e) {
+        e.name = e.name === 'menu' ? 'close' : 'menu'
+        navlinks.classList.toggle('top-[7%]')
+      }
+      const slides = document.querySelectorAll(".slide");
+let counter = 0;
+let interval = null;
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playImage = 'assets/play-button.png'; 
+const pauseImage = 'assets/pause-button.png'; 
+let isPlaying = false;
+
+slides.forEach((slide, index) => {
+  slide.style.left = `${index * 100}%`;
+});
+
+const slideImage = () => {
+  slides.forEach((slide) => {
+    slide.style.transform = `translateX(-${counter * 100}%)`;
+  });
+
+  // Update radio buttons
+  document.getElementById("radio1").checked = counter === 0;
+  document.getElementById("radio2").checked = counter === 1;
+};
+
+const goPrev = () => {
+  counter = (counter - 1 + slides.length) % slides.length;
+  slideImage();
+};
+
+const goNext = () => {
+  counter = (counter + 1) % slides.length;
+  slideImage();
+};
+
+// Auto slide functionality
+const startSlideshow = () => {
+  interval = setInterval(() => {
+    goNext();
+  }, 3000);
+
+  // Update the button image to "Pause"
+  playPauseBtn.querySelector('img').src = pauseImage;
+  isPlaying = true;
+};
+
+const stopSlideshow = () => {
+  clearInterval(interval);
+
+  // Update the button image to "Play"
+  playPauseBtn.querySelector('img').src = playImage;
+  isPlaying = false;
+};
+
+const togglePlayPause = () => {
+  if (isPlaying) {
+    stopSlideshow();
+  } else {
+    startSlideshow();
+  }
+};
+
+// Initially set the first radio button to active
+document.getElementById("radio1").checked = true;
+
+// Ensure the play/pause button starts with the play image
+playPauseBtn.querySelector('img').src = playImage;
+
+ // Start the slideshow automatically on page load
+ startSlideshow();
+</script>
+
+
+  </body>
+</html>
